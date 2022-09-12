@@ -15,12 +15,12 @@ import static org.junit.Assert.*;
 public class CatTest {
 
     @Mock
-    Predator predator;
+    Feline feline;
     private Cat cat;
 
     @Before
     public void setUp (){
-        this.cat = new Cat(predator);
+        this.cat = new Cat(feline);
     }
     @Test
     public void getSoundShouldBeMaw() {
@@ -32,9 +32,9 @@ public class CatTest {
     @Test
     public void getFoodShouldUseEatMeat() throws Exception {
         List<String> expectedResult = List.of("meat");
-        Mockito.when(predator.eatMeat()).thenReturn(expectedResult);
+        Mockito.when(feline.eatMeat()).thenReturn(expectedResult);
         List<String> actualResult = cat.getFood();
-        Mockito.verify(predator, Mockito.times(1)).eatMeat();
+        Mockito.verify(feline, Mockito.times(1)).eatMeat();
         assertEquals(expectedResult,actualResult);
     }
 }
